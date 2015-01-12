@@ -4,7 +4,7 @@ filenameのformatは以下のようにしようと思います。
 
 ## 問題
 ```sh
-YYYY-MM-YY_username
+YYYY-MM-DD_username
 ```
 例
 ```sh
