@@ -1,6 +1,8 @@
+# 問題と解答
 ゼミの場で利用する問題関連のファイルです。  
 filenameのformatは以下のようにしようと思います。  
-_問題_
+
+## 問題
 ```sh
 YYYY-MM-YY_username
 ```
@@ -9,7 +11,7 @@ YYYY-MM-YY_username
 2015-01-15_monman53.md
 ```
 
-_解答(任意)_
+## 解答(任意)
 ```sh
 YYYY-MM-DD_username_ans
 ```
