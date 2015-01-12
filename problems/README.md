@@ -6,7 +6,7 @@ filenameのformatは以下のようにしようと思います。
 ```sh
 YYYY-MM-DD_username
 ```
-例
+例:
 ```sh
 2015-01-15_monman53.md
 ```
@@ -15,7 +15,7 @@ YYYY-MM-DD_username
 ```sh
 YYYY-MM-DD_username_ans
 ```
-例
+例:
 ```sh
 2015-01-12_username_ans.md
 ```
