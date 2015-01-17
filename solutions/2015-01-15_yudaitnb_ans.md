@@ -55,11 +55,11 @@ Prelude> tris
 (3) `(/=) :: (Eq a) => a -> a -> Bool`
 (4) `(show True) :: String`
 
-### 2-3
+### 2-2
 (1) 型推論に必要な情報が不足しているため。型注釈を行えばよい。`read "1" ::  Int`などとする。
 (2) 第一項は整数型なのに対し、第二項は浮動小数点型であるため。`fromIntegral (length [1,2,3]) + 3.2`とすればよい。
 
-### 2-4
+### 2-3
 * Eq : 等値性が定義される型のクラス。
 * Ord : 順序が定義される型のクラス。
 * Show : Stringに変換できる型のクラス。
@@ -101,10 +101,11 @@ farey n = add $ farey (n-1)
               | otherwise = it : (add tl)
           add last = last
 
-stern 0 = [0,1]
-stern n = add $ stern (n-1)
-    where add (a:tl@(b:_)) = a : a+b : add tl
+farey2 0 = [(0,1),(1,1)]
+farey2 n = add $ farey2 (n-1)
+    where add (it@((a,b)):tl@((c,d):_)) = it : (a+c,b+d) : add tl
           add last = last
+stern n = [fst x | x <- farey2 n]
 stern' m = (stern 100) !! m
 
 set1 n = [(stern' a, stern' (2*a))  | a <- [1..n] ]
