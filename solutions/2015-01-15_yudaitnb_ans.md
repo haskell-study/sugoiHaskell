@@ -1,5 +1,5 @@
 ## 解答
-[](sugoiHaskell/problems/2015-01-15_yudaitnb.md)
+[問題ページ](sugoiHaskell/problems/2015-01-15_yudaitnb.md)
 
 ### 1-1
 (1) エラーとなる。`div 4 div`が計算されようとしてしまうため。`div 4 (div 6 2) -1` とすればよい。
