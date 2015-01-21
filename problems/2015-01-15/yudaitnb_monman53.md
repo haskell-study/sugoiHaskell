@@ -71,14 +71,13 @@ compare :: Ord a => a -> a -> Ordering
 
 ## 2-2
 #### (1)
-`1は多相定数でありこのままでは型が定まらない。
+`1`は多相定数でありこのままでは型が定まらない。
 ```haskell
 read "1" :: Int
 ```
 のように型注釈を用いればよい。
 #### (2)
-1-1 (2)と同じ理由でエラーとなる。整数をより一般的な数にする`fromIntegral`関数を用い
-て、
+1-1 (2)と同じ理由でエラーとなる。整数をより一般的な数にする`fromIntegral`関数を用いて、
 ```haskell
 fromIntegral (length [1,2,3]) + 3.2
 ```
@@ -86,14 +85,14 @@ fromIntegral (length [1,2,3]) + 3.2
 
 ## 2-3
 Eq: 等値性を評価できる  
-Ord: 順序付けられる
-Show: 文字列として表現できる
-Read: 文字列から特定の型に戻せる
-Enum: 順序が定義されている
-Bounded: 上限と下限がある
-Num: 数
-Floating: 浮動小数点数
-Integral: 整数
+Ord: 順序付けられる  
+Show: 文字列として表現できる  
+Read: 文字列から特定の型に戻せる  
+Enum: 順序が定義されている  
+Bounded: 上限と下限がある  
+Num: 数  
+Floating: 浮動小数点数  
+Integral: 整数  
 
 ## 3-1
 #### (1)
