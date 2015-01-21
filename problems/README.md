@@ -1,21 +1,17 @@
-# 問題と解答
+#問題と解答
 ゼミの場で利用する問題関連のファイルです。  
-filenameのformatは以下のようにしようと思います。  
+度々変更して申し訳ありません。  
+ファイル名とファイル形式は以下のようにしようと思います。
 
-## 問題
+## 問題(出題)
 ```sh
-YYYY-MM-DD_username
+syutsudaisya.md
 ```
-例:
+## 答案
 ```sh
-2015-01-15_monman53.md
+syutsudaisya_kaitousya.md
 ```
-
-## 解答(任意)
+## 出題者による模範解答
 ```sh
-YYYY-MM-DD_username_ans
-```
-例:
-```sh
-2015-01-12_monman53_ans.md
+syutsudaisya_syutsudaisya.md
 ```
