@@ -288,13 +288,13 @@ farey2 n = far' (far (n-1))
         far' ((a,b) : xs@((c,d) : _)) = (a,b) : (a + c, b + d) : far' xs
         far' xs = xs
   
-stern :: Num a => Int -> a
-stern n = [fst x | x <- farey2 100] !! n
+stern' :: Num a => Int -> a
+stern' n = [fst x | x <- farey2 100] !! n
   
 set1 :: (Num t1, Num t) => Int -> [(t, t1)]
-set1 n = [(stern a, stern (2*a))  | a <- [1..n] ]
+set1 n = [(stern' a, stern' (2*a))  | a <- [1..n] ]
 set2 :: (Num t1, Num t) => Int -> [(t, t1)]
-set2 n = [(stern (2*a+1), stern a + stern (a+1)) | a <- [1..n]]
+set2 n = [(stern' (2*a+1), stern' a + stern' (a+1)) | a <- [1..n]]
   
 ghci > set1 100
 [(1,1),(1,1),(2,2),(1,1),(3,3),(2,2),(3,3),(1,1),(4,4),(3,3),(5,5),
