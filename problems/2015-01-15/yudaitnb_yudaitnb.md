@@ -27,10 +27,8 @@ quot :: Integral a => a -> a -> a
 rem  :: Integral a => a -> a -> a
 ````
 これらの関数は共に  
-````
 (quot x y) * y + (rem x y) == x  
-(div  x y) * y + (mod x y) == x
-````
+(div  x y) * y + (mod x y) == x  
 (「==は(x,yについて)恒等的に等しい」の意。)  
 を満たすのだが、明確な違いがある。説明せよ。  
   
