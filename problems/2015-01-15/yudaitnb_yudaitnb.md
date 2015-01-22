@@ -288,7 +288,7 @@ farey2 n = far' (far (n-1))
         far' ((a,b) : xs@((c,d) : _)) = (a,b) : (a + c, b + d) : far' xs
         far' xs = xs
 
-stern n = [fst x | x <- far n]
+stern n = [fst x | x <- farey2 n]
 ````
 ````
 ghci > stern 4
