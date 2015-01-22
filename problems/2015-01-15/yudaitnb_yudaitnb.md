@@ -209,8 +209,8 @@ fib' n
     | n == 1 = 1
     | otherwise = fib' (n-1) + fib' (n-2)
 ````
-````
 case-of
+````
 fib'' :: Int -> Int
 fib'' n = case n of
     0 -> 0
