@@ -1,0 +1,5 @@
+`mcount st = length [c | c <- st, c == 'm']`
+````
+ghci > mcount "kitayutamonman53yudaitnb"
+2
+````
