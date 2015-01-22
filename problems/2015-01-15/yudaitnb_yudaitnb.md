@@ -281,15 +281,15 @@ farey n = farey' [(0, 1), (1, 1)]
 ````
 (2)
 ````
-far :: (Num t1, Num t, Num a, Eq a) => a -> [(t, t1)]
-far 0 = [(0,1),(1,1)]
-far n = far' (far (n-1))
+farey2 :: (Num t1, Num t, Num a, Eq a) => a -> [(t, t1)]
+farey2 0 = [(0,1),(1,1)]
+farey2 n = far' (far (n-1))
     where
         far' ((a,b) : xs@((c,d) : _)) = (a,b) : (a + c, b + d) : far' xs
         far' xs = xs
   
 stern :: Num a => Int -> a
-stern n = [fst x | x <- far 100] !! n
+stern n = [fst x | x <- farey2 100] !! n
   
 set1 :: (Num t1, Num t) => Int -> [(t, t1)]
 set1 n = [(stern a, stern (2*a))  | a <- [1..n] ]
