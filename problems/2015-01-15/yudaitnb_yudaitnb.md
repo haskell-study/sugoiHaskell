@@ -8,7 +8,8 @@
   
 ### 1-1(答え)  
 (1)エラー。(div 4 div)と判断される為。  
-div 4 (div 6 2) - 1とすればよい。詳しくは第五章。  
+`div 4 (div 6 2) - 1`  
+とすればよい。詳しくは第五章。  
 (2)エラー。関数+の二引数は同型である必要がある。1.0を1にすればよい。  
 `(+) :: Num a => a -> a -> a`  
   
@@ -74,14 +75,13 @@ ghci > divMod 7 (-3)
 ghci > let a = [[1,2],[2,3],[3,4]]  
 ghci > let b = init(tail([0,1] : (a ++ [[4,5]])))  
 ````
-``ghci > sum(b !! 2) + length b``  
-
+``ghci > sum(b !! 2) + length b``
 (1)  
-``ghci > sum(maximum(2 `take` b))``  
+``ghci > sum(maximum(2 `take` b))``
 (2)  
-``ghci > [0,1] `elem` b || null b``  
+``ghci > [0,1] `elem` b || null b``
 (3)  
-``ghci > null(drop 5 b) && [0,2] < minimum b``   
+``ghci > null(drop 5 b) && [0,2] < minimum b``
 (4)  
   
 ### 1-3(答え)  
