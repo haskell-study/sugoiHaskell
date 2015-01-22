@@ -79,15 +79,15 @@ ghci > divMod 7 (-3)
 以下の出力を答えよ。なお、全ての出力はエラーではない。  
 ````
 ghci > let a = [[1,2],[2,3],[3,4]]  
-ghci > let b = init(tail([0,1] : (a ++ [[4,5]])))  
+ghci > let b = init (tail ([0,1] : (a ++ [[4,5]])))  
 ````
-``ghci > sum(b !! 2) + length b``  
+``ghci > sum (b !! 2) + length b``  
 (1)  
-``ghci > sum(maximum(2 `take` b))``  
+``ghci > sum (maximum (2 `take` b))``  
 (2)  
 ``ghci > [0,1] `elem` b || null b``  
 (3)  
-``ghci > null(drop 5 b) && [0,2] < minimum b``  
+``ghci > null (drop 5 b) && [0,2] < minimum b``  
 (4)  
   
 ### 1-3(答え)  
