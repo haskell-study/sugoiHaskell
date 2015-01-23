@@ -56,4 +56,4 @@ lsystem :: (Char -> [Char]) -> [Char] -> Int -> [Char]
 ```
 をつくれ.なおnが負の場合の扱いは自由.nが0以上と保証されているとして作っても良い.また,この二つの関数の型が正しければ,別に関数を用意して`lsystem`内で利用しても良い.
 ### (2)
-(1)でつくった関数を用いて(`rules`は定義し直す),[Penroseovo dláždění](http://cs.wikipedia.org/wiki/L-syst%C3%A9m)の世代3の文字列を出力せよ.
+試しに(1)でつくった関数を用いて(`rules`は定義し直す),[Wikipedia](http://cs.wikipedia.org/wiki/L-syst%C3%A9m)に挙げられている例"Penroseovo dláždění"について,世代3の文字列を出力せよ.
