@@ -19,8 +19,17 @@ kitayutaくんは一体m*mの正三角格子に最大何個の魔方陣を書く
 入力としてmが与えられたときに、kitayutaくんが書ける魔方陣の個数を出力せよ。
   
 ### 例  
-ここで条件を満たす6点を集めた集合の集合をhexaとしてます。
+ここで条件を満たす6点を集めた集合の集合をhexaとしてます。  
+```
 length (hexa 1) = 0  
 length (hexa 2) = 0
 length (hexa 3) = 1
-length (hexa 3) = 1
+length (hexa 4) = 5
+length (hexa 5) = 16
+length (hexa 6) = 36
+length (hexa 7) = 76
+length (hexa 8) = 138
+length (hexa 9) = 234
+....
+```
+
