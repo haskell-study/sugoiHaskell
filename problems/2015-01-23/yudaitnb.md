@@ -25,11 +25,5 @@ length (hexa 1) = 0
 length (hexa 2) = 0
 length (hexa 3) = 1
 length (hexa 4) = 5
-length (hexa 5) = 16
-length (hexa 6) = 36
-length (hexa 7) = 76
-length (hexa 8) = 138
-length (hexa 9) = 234
-....
+length (hexa 5) = 15
 ```
-
