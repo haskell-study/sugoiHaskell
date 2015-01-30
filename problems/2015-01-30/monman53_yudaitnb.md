@@ -3,3 +3,7 @@ mの小文字と大文字が含まれているもののみをfilterし、その�
 mcount :: Num b => [Char] -> b
 mcount xs = foldl (\x _ -> x + 1) 0 (filter (`elem` ['m','M']) xs)
 ```
+````
+ghci> mcount "ndxmkkeM"
+2
+````
