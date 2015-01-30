@@ -37,6 +37,27 @@ memph st = case st of
 	'M':xs -> "**M**" ++ memph xs
 	x:xs -> x:memph xs
 ````
+  
+### 4-4
+```
+mergesort :: Ord a => [a] -> [a]
+mergesort list = ms (length list) list
+    where
+		merge xs [] = xs
+		merge [] ys = ys
+		merge xs@(x:xs') ys@(y:ys')
+			| x <= y = x:(merge xs' ys)
+			| otherwise = y:(merge xs ys') 
+		-- 数列xsとysに対して再帰的に各数列先頭を比較して、小さい方をmergeの先頭に追加。
+		ms _ [] = []
+		ms _ [x] = [x]
+		ms n xs = merge (ms m as) (ms (n - m) bs)
+			where
+				m = div n 2
+				(as, bs) = splitAt m xs
+		-- nはリストの長さ。
+```
+  
 ### 5-1  
 (1)  
 ````
