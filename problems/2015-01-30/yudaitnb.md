@@ -33,7 +33,7 @@ addThree x y z = x + y + z
 (2)  
 ````
 flip' :: (a -> b -> c) -> b -> a -> c
-flip' x y = flip y x
+flip' f x y = f y x
 ````
 
 ###5-5(PC)
