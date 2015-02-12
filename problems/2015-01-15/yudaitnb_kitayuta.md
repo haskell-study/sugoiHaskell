@@ -1,6 +1,4 @@
 ## 解答
-[問題ページ](../problems/2015-01-15_yudaitnb.md)
-
 ### 1-1
 (1) エラーとなる。`div 4 div`が計算されようとしてしまうため。`div 4 (div 6 2) -1` とすればよい。
 
@@ -124,7 +122,6 @@ farey2 n = add $ farey2 (n-1)
           add last = last
 
 stern n = [fst x | x <- farey2 n]
-stern' m = (stern 100) !! m
 ```
 
 出力
@@ -140,6 +137,7 @@ stern' m = (stern 100) !! m
 
 コード((2)からの続き)
 ```haskell
+stern' m = (stern 100) !! m
 set1 n = [(stern' a, stern' (2*a))  | a <- [1..n] ]
 set2 n = [(stern' (2*a+1), stern' a + stern' (a+1)) | a <- [1..n]]
 ```
