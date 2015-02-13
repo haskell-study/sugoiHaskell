@@ -59,3 +59,5 @@ ghci> countWords ["your", "and", "lecture"] "Thank you for your mail and your le
 今回作成した関数をまとめたモジュールをつくれ.  
 エクスポートする関数は自由.  
 関数名も自由に変更してよい.
+
+aaaaaaa

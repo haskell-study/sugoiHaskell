@@ -20,7 +20,7 @@ kitayutaくんは一体m*mの正三角格子に最大何個の魔方陣を書く
   
 ### 例  
 ここで条件を満たす6点を集めた集合の集合をhexaとしてます。  
-```
+```haskell
 length (hexa 1) = 0  
 length (hexa 2) = 0
 length (hexa 3) = 1
