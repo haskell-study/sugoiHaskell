@@ -4,7 +4,7 @@
 `=`以前の`Point`は型コンストラクタ、`=`以後の`Point`は値コンストラクタ。
 
 #### (2)
-```
+```haskell
 Point :: Float -> Float -> Point
 ```
 
