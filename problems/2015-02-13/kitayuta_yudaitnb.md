@@ -51,7 +51,7 @@ Show型クラスのインスタンスとしてのGInteger
 ghci > show NInf
 "NInf"
 ```
-Read型クラスのインスタンスとしてのGINteger
+Read型クラスのインスタンスとしてのGInteger
 ```
 ghci > let a = "Inte " ++ "6"
 ghci > read a :: GInteger
