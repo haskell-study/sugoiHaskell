@@ -9,7 +9,7 @@ singleblock :: a -> Polyomino a
 singleblock x = Block x EB EB EB EB
 ```
 ```haskell
-blockInsert :: (Ord a) => a -> Polyomino a -> Polyomino a
+blockInsert :: Integral a => a -> Polyomino a -> Polyomino a
 blockInsert x EB = singleblock x
 blockInsert x (Block a top left bottom right)
 	| x < a                    = Block a top (blockInsert x left) bottom right
