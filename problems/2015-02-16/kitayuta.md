@@ -8,7 +8,6 @@
 #### (2)
 型`[String]`で表される真となる命題変数の集合、および論理式が与えられた時、論理式の充足判定する関数
 ```haskell
-isSat :: [String] -> Formula -> Bool
 isSat :: Formula -> [String] -> Formula -> Bool
 ```
 を実装せよ。ただし、真となる命題変数の集合に含まれなかった命題変数は全て偽であるものとして取り扱うこと。
