@@ -21,9 +21,9 @@ blockInsert x (Block a top left bottom right)
 ```
 polyominoB b = foldr blockInsert EB b
 ```
-とし、この集合xによってpolyominoXが決定する。
+とし、この集合bによってpolyominoBが決定する。
 ブロックは同一平面上に配置するものとし、上下左右は関数内の順番に従う。  
-出来たブロック群のEBを無視すれば、出来た図形がpolyominoXである。  
+出来たブロック群のEBを無視すれば、出来た図形がpolyominoBである。  
 (1)上下4マスの長さのpolyominoBを出力するBの例を一つ挙げよ。  
 (2)左右5マスの長さのpolyominoBを出力するBの例を一つ挙げよ。  
 (3)Hの形(大きさは何でもよい)のpolyominoBを出力するBの例を一つ挙げよ。  
