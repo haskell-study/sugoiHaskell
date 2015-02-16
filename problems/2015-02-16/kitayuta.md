@@ -9,6 +9,7 @@
 型`[String]`で表される真となる命題変数の集合、および論理式が与えられた時、論理式の充足判定する関数
 ```haskell
 isSat :: [String] -> Formula -> Bool
+isSat :: Formula -> [String] -> Formula -> Bool
 ```
 を実装せよ。ただし、真となる命題変数の集合に含まれなかった命題変数は全て偽であるものとして取り扱うこと。
 
@@ -17,4 +18,4 @@ isSat :: [String] -> Formula -> Bool
 ```haskell
 isTauto :: Formula -> Bool
 ```
-を実装し、`isTauto` を使って `(P∧(P→Q))→Q`, `(P→Q)→((Q→R)→(P→R))`, `(P∨Q)→(P∧Q)`, `¬(P∧Q)→(¬P∨¬Q)` などについて、恒真式であるかどうか確かめよ。
+を実装し、`isTauto` を使って `(P∧(P→Q))→Q`, `(P→Q)→((Q→R)→(P→R))`, `(P∨Q)→(P∧Q)`, `¬(P∧Q)→(¬P∨¬Q)` などについて、恒真式であるかどうか確かめよ。なお、いかなる命題変数についても判定できるように実装すること（P,Q,Rだけに限定しない）。
