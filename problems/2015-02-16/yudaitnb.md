@@ -28,4 +28,4 @@ polyominoB b = foldr blockInsert EB b
   
 (1)上下4マスの長さのpolyominoBを出力するBの例を一つ挙げよ。  
 (2)左右5マスの長さのpolyominoBを出力するBの例を一つ挙げよ。  
-(3)Hの形(大きさは何でもよい)のpolyominoBを出力するBの例を一つ挙げよ。  
+(3)piの形(大きさは何でもよい)のpolyominoBを出力するBの例を一つ挙げよ。  
