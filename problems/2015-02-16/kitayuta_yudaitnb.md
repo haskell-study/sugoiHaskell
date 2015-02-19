@@ -31,13 +31,13 @@ isTauto formula = all (isSat formula) $ subsequences $ nub $ prop' formula
 ```
 以下与命題の真偽判定。
 ```
-ghci> isTauto $ (Prop "P" `And` (Prop "P" `Then` Prop "Q")) `Then` Prop "Q"
+ghci > isTauto $ (Prop "P" `And` (Prop "P" `Then` Prop "Q")) `Then` Prop "Q"
 True
-ghci> isTauto $ (Prop "P" `Then` Prop "Q") `Then` ((Prop "Q" `Then` Prop "R") `Then` (Prop "P" `Then` Prop "R"))
+ghci > isTauto $ (Prop "P" `Then` Prop "Q") `Then` ((Prop "Q" `Then` Prop "R") `Then` (Prop "P" `Then` Prop "R"))
 True
-ghci> isTauto $ (Prop "P" `Or` Prop "Q") `Then` (Prop "P" `And` Prop "Q")
+ghci > isTauto $ (Prop "P" `Or` Prop "Q") `Then` (Prop "P" `And` Prop "Q")
 False
-ghci> isTauto $ Not (Prop "P" `And` Prop "Q") `Then` (Not (Prop "P") `Or` Not (Prop "Q"))
+ghci > isTauto $ Not (Prop "P" `And` Prop "Q") `Then` (Not (Prop "P") `Or` Not (Prop "Q"))
 True
 ```
 
