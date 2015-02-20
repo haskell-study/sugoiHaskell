@@ -114,18 +114,22 @@ testcase
 ai
 iu
 ue
-
+```
+Aの勝ち
+```
 3
 aiu
 uaa
 aiu
-
+```
+Aの負け(Bの勝ち)
+```
 3
 aiu
 uaa
 cba
-
 ```
+Aの負け(Bの勝ち)
 # 9-N
 欠番
 # 10-N
