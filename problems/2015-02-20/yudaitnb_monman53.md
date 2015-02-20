@@ -88,6 +88,10 @@ numTree = foldr treeInsert EmptyTree
 main = forever $ do
     tree <- readLn
     print $ heightTree ( numTree ( tree :: [Int]))
+
+heightTree :: Tree a -> Int
+heightTree EmptyTree = 0
+heightTree (Node _ left right) = 1 + max (heightTree left) (heightTree right)
 ```
 ## 8-6
 ```haskell
