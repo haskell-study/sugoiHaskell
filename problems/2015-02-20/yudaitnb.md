@@ -57,7 +57,7 @@ ghci> sequence $ map print [1,2,3]
 ### (1)(復習)
 二分木を数のリスト`nums`から生成するプログラムを書け。ただし`Tree`型は
 ```haskell
-data Tree a = Empty Tree | Node (Tree a) (Tree a) (Tree a) deriving (Show)
+data Tree a = Empty Tree | Node a (Tree a) (Tree a) deriving (Show)
 ```
 と定義し、補助関数
 ```haskell
