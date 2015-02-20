@@ -1,0 +1,229 @@
+# 8 入出力 **hoge** `hoge`
+## 8.1 不純なものと純粋なものを分離する
+Haskell等の純粋型関数型言語では、関数は**副作用**を持たない。  
+副作用とは、「ある機能がコンピュータの(論理的な)状態を変化させ、それ以降で得られる結果に影響を与えること」である。  
+例として、破壊的代入や、I/O制御(print)等が挙げられる。  
+Haskellの関数は与引数のみ用いて何らかの結果を返すことしかできない。即ち、Haskellでは以下の2つを満たす。  
+> ・同じ条件を与えれば必ず同じ結果が得られる。  
+> ・他のいかなる機能の結果にも影響を与えない。  
+
+これらの性質を**参照透過性**という。この性質により状況依存のバグの発生を抑制することが出来る。  
+対して命令型言語では副作用を持つ。効率の面では不利になることもあり、一長一短である。  
+Haskellは副作用を持つ関数を扱うためのシステムを持っており、参照透過性を保持している。
+## 8.2 Hello, World!
+```haskell
+main = putStrLn "hello, world"
+```
+これを打ち込みhelloworld.hsとして保存。端末を開いて以下のコマンドでプログラムを実行する。
+```
+$ ghc --make helloworld
+[1 of 1] Compiling Main             ( helloworld.hs, helloworld.o )
+Linking helloworld.exe ...
+$ ./helloworld
+hello, world
+```
+ここで用いた関数は以下の型を持つ。
+```
+ghci > :t putStrLn
+putStrLn :: String -> IO ()
+ghci > :t putStrLn "hello, world"
+putStrLn "hello, world" :: IO ()
+```
+ここで`IO ()`は**I/Oアクション**と呼ばれる。I/Oアクションとは実行されると副作用を含む動作をして結果を生成するものである。  
+文字列を端末に表示するアクションには実際には意味のある返り値が無いので、ダミー値として`()`を用いている。  
+I/Oアクションは、`main`という名前を付けてプログラムを起動すると実行される。
+## 8.3 I/Oアクション同士を纏める
+複数のI/Oアクションを一つにするのには`do`構文を用いる。
+```haskell
+main = do
+    putStrLn "Hello, what's your name?"
+    name <- getLine
+    putStrLn ("Hey " ++ name ++ ", you rock!")
+```
+```
+getLine :: IO String
+```
+このとき`name`は`getLine`の結果に束縛されているので、型は`String`になる。  
+また`do`ブロックの全ての行に束縛を書いても良い。即ち上のプログラムは以下のように書き換えられる。  
+但し、`do`ブロックの最終アクションだけは名前に束縛することはできない。(詳しくは13章モナドで。)
+一般的には、一行目のような意味の無い束縛は省略する。
+```haskell
+main = do
+    foo  <- putStrLn "Hello, what's your name?"
+    name <- getLine
+    putStrLn ("Hey " ++ name ++ ", you rock!")
+```
+### I/Oアクションの中でletを使う
+```haskell
+import Data.Char
+
+main = do
+    putStrLn "What's your first name?"
+    fristName <- getLine
+    putStrLn "What's your last name?"
+    lastName <- getLine
+    let bigFirstName = map toUpper fristName
+        bigLastName  = map toUpper lastName
+    putStrLn $ "hey " ++ bigFirstName ++ " "
+        ++ bigLastName ++ ", how are you?"
+```
+`<-`はI/Oアクションの結果に名前を束縛したいときに使う。  
+`let`束縛は純粋な式に名前を束縛するのに使う。
+### 逆順に表示する
+```haskell
+import Data.Char
+
+main = do
+    line <- getLine
+    if null line 
+        then return ()
+        else do
+            putStrLn $ reverseWords line
+            main
+
+reverseWords :: String -> String
+reverseWords = unwords . map reverse . words
+```
+`words`で行毎に入力した単語のリストにする。それに`reverse`を`map`し、最後に`unwords`で単語に戻している。
+## 8.4 いくつかの便利なI/O関数
+概略と、コンパイルして実行した結果だけを書く。
+### putStr
+文字列`"hoge"`を引数として受け取り、その文字列を端末に表示するI/Oアクションを返す。但し、改行しない。(putStrLnは改行する)
+```haskell
+main = do
+  putStr "a"
+  putStr "b"
+```
+```
+ab
+```
+### putChar
+文字`'a'`を引数として受け取り、その文字を端末に表示するI/Oアクションを返す。
+```haskell
+main = do
+  putChar 'a'
+```
+```
+a
+```
+### print
+`Show`型のインスタンスの型の値を受け取り、それに`show`関数を適用して「文字列化」して、それからその文字列を端末に出力する。  
+基本的には`putStrLn . show`と同じもの。
+```
+main = do
+  print True
+  print 2
+  print "abc"
+  print 3.2
+  print [1,2]
+```
+```
+True
+2
+"abc"
+3.2
+[1,2]
+```
+### when
+`Control.Monad`モジュールにある関数。`Bool`とI/Oアクションお受け取り、   `Bool`が`True`の時はI/Oアクションを、`False`のときは`return ()`(何もしない)を返す。  
+以下の二つのプログラムは同じ働きをする。
+```haskell
+import Control.Monad
+main = do
+  input <- getLine
+  when (input == "abc") $ do
+    putStrLn input
+```
+```haskell
+main = do
+  input <- getLine
+  if (input == "abc")
+    then putStrLn input
+    else return ()
+```
+### sequence
+I/Oアクションにリストを受け取り、それらを順に実行するI/Oアクション(シーケンス)を返す。
+以下の二つのプログラムは同じ働きをする。
+```haskell
+main = do 
+  a <- getLine
+  b <- getLine
+  c <- getLine
+  print [a,b,c]
+```
+```haskell
+main = do
+  rs <- sequence [getLine, getLine, getLine]
+  print rs
+```
+以下のように使う場合が多い。
+```
+ghci > sequence $ map print [1,2,3,4,5]
+1
+2
+3
+4
+5
+[(),(),(),(),()]
+```
+### mapM, mapM_
+関数とリストを受け取り、リストに対して関数を`map`し、それからそれをシーケンスにする。  
+mapM_も同じことをするが、後でI/Oアクションの結果を捨ててしまう。
+```
+ghci> mapM print [1,2,3]
+1
+2
+3
+```
+```
+ghci> mapM_ print [1,2,3]
+1
+2
+3
+```
+### forever
+`Control.Monad`モジュールにある関数。  
+I/Oアクションを受け取り、そのI/Oアクションを永遠に繰り返すI/Oアクションを返す。  
+次のプログラムは無限にユーザからの入力を受け取り、それを大文字化して出力し続ける。
+```haskell
+import Control.Monad
+import Data.Char
+main = forever $ do
+  putStr "Give me some input: "
+  l <- getLine
+  putStrLn $ map toUpper l
+```
+### forM
+`Control.Monad`モジュールにある関数。`mapM`に似ているが、引数の順序が逆になっている。  
+```haskell
+import Control.Monad
+main = do
+  colors <- forM [1,2,3,4] $ \a -> do
+    putStrLn $ "Which color do you associate with the number "
+      ++ show a ++ "?"
+    color <- getLine
+    return color
+  putStrLn "The colors that you associate with 1, 2, 3 and 4 are: "
+  mapM putStrLn colors
+```
+```
+Which color do you associate with the number 1?
+white
+Which color do you associate with the number 2?
+blue
+Which color do you associate with the number 3?
+red
+Which color do you associate with the number 4?
+orange
+The colors that you associate with 1, 2, 3 and 4 are: 
+white
+blue
+red
+orange
+```
+`forM`関数は「リストの各要素に対応するI/Oアクションを作る」関数。  
+それぞれのI/Oアクションの動作は、アクションを作るのに使った要素に応じたものにできる。  
+最終的にはアクションを実行された結果が何かに束縛される。  
+## 8.5 I/Oアクションおさらい
+I/Oアクションというのは値である。関数の引数として渡すことが出来て、関数のけ化としてI/Oアクションを返すことが出来る。
+I/Oアクションの特殊性は`main`関数の中に入っていると(あるいはGHCi上で評価されると)それが実行されるところ。
