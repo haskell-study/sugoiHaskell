@@ -66,7 +66,7 @@ treeInsert :: (Ord a) => a -> Tree a -> Tree a -- 数字を木に挿入する
 ```
 を定義することで
 ```
-numTree = foldr treeInsert EmptyTree nums
+ghci> let numTree = foldr treeInsert EmptyTree nums
 ```
 を作る。入力として`nums = [7,5,3,1,6,2,4]`を与えると
 ```
