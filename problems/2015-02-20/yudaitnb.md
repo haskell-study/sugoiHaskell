@@ -123,7 +123,7 @@ aiu
 3
 aiu
 uaa
-abc
+cba
 
 ```
 # 9-N
