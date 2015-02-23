@@ -1,4 +1,4 @@
-### (1)
+### 問題の指定の型シグネクチャを無視してます
 ```haskell
 import Data.List
 import Data.Char
