@@ -12,10 +12,7 @@ main = do
         let [m,c,w] = map read $ words xs
         ablist <- replicateM c getLine
         putStrLn $ "Case #"　++ show n ++ ": " ++ 
-            show (solve (card c m ablist) w)
-
-solve :: [Int] -> Int -> Int
-solve card w = card !! (w-1)
+            show ((card c m ablist) !! (w-1))
 
 card :: Int -> Int -> [String] -> [Int]
 card n m xs
