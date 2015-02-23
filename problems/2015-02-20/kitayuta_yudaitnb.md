@@ -1,4 +1,5 @@
 ### 問題の指定の型シグネクチャを無視してます
+###(1)
 ```haskell
 import Data.List
 import Data.Char
@@ -11,7 +12,7 @@ main = do
         let [m,c,w] = map read $ words xs
         ablist <- replicateM c getLine
         putStrLn $ "Case #"　++ show n ++ ": " ++ 
-            show (solve (card n m ablist) w)
+            show (solve (card c m ablist) w)
 
 solve :: [Int] -> Int -> Int
 solve card w = card !! (w-1)
