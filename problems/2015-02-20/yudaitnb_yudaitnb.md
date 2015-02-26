@@ -105,15 +105,11 @@ heightTree (Node _ x y) = 1 + max (heightTree x) (heightTree y)
 入力`list.txt`が
 ```
 [1,2,3]
-[3,2,1]
-[2,1,3]
 ```
 であれば
 ```
 $ ./height < list.txt
 3
-3
-2
 ```
 となる。
 ## 8-6
