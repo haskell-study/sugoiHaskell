@@ -143,7 +143,7 @@ siri n xs -- n-1,n回目のしりとりが成立しているかを調べる。
         word n xs = xs !! (n-1)
 ```
 ```
-ghci> runhaskell siritori.hs < testcase.txt
+$ runhaskell siritori.hs < testcase.txt
 A LOSE
 ```
 testcase
